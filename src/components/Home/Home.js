@@ -41,6 +41,7 @@ const handleUserDelete = id =>{
       <ul>{
           users.map(user => <li key={user._id}>{user.name} :: {user.email}
           <button onClick={() => handleUserDelete(user._id)}>X</button>
+          <Link to={`/update/${user._id}`}>Update</Link>
           </li>)
         }</ul>
     </div>
