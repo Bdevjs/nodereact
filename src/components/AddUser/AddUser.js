@@ -3,28 +3,25 @@ const AddUser = () => {
 
   const handleAddUser = event =>{
     event.preventDefault();
-    
-    
-     const name = event.target.name.value;
-     const email = event.target.email.value;
+    const name = event.target.name.value;
+    const email = event.target.email.value;
 
-     const user ={name,email};
-     console.log(user)
+    const user = {name, email};
 
-    // //Send data to the server through Api
-    // fetch('http://localhost:5000/adduser',{
-    //     method: 'POST',
-    //     headers:{
-    //         'content-type': 'application/json'
-    //     },
-    //     body:JSON.stringify(user)
-    // })
-    // .then(res => res.json())
-    // .then(data =>{
-    //     console.log('success',data);
-    //     alert('User added successfully');
-    //     event.target.reset();
-    // })
+    // send data to the server
+    fetch('http://localhost:5000/user', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log('success', data);
+        alert('users added successfully!!!');
+        event.target.reset();
+    })
   }  
   return (
     <div>
@@ -45,4 +42,4 @@ const AddUser = () => {
   )
 }
 
-export default AddUser
+export default AddUser;
